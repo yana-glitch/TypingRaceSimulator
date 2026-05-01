@@ -144,6 +144,8 @@ public class Typist
     {
         this.progress = 0;
         this.burnout_indicator = false;
+        this.turns_remaining = 0;
+        this.justMistyped = false;
     }
 
     /**
