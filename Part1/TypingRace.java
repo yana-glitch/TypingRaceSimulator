@@ -83,6 +83,8 @@ public class TypingRace
         seat2Typist.resetToStart();
         seat3Typist.resetToStart();
 
+        Typist winner = null;
+
         while (!finished)
         {
             // Advance each typist by one turn
@@ -93,9 +95,17 @@ public class TypingRace
             // Print the current state of the race
             printRace();
 
-            // Check if any typist has finished the passage
-            if ( raceFinishedBy(seat1Typist) || raceFinishedBy(seat2Typist) || raceFinishedBy(seat3Typist) )
-            {
+            // Check if any typist has finished the passage and declare the winner
+            if (raceFinishedBy(seat1Typist)) {
+                winner = seat1Typist;
+                finished = true;
+            } 
+            else if (raceFinishedBy(seat2Typist)) {
+                winner = seat2Typist;
+                finished = true;
+            } 
+            else if (raceFinishedBy(seat3Typist)) {
+                winner = seat3Typist;
                 finished = true;
             }
 
@@ -106,6 +116,16 @@ public class TypingRace
         }
 
         // TODO (Task 2a): Print the winner's name here
+        // Print the final announcement using the temporary variable
+        if (winner != null)
+        {
+            double oldAccuracy = winner.getAccuracy();
+            winner.setAccuracy(oldAccuracy + 0.02);
+            
+            System.out.println();
+            System.out.println("And the winner is... " + winner.getName() + "!");
+            System.out.println("Final accuracy: " + winner.getAccuracy()); 
+        }
     }
 
     /**
