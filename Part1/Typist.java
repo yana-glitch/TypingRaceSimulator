@@ -17,7 +17,13 @@ public class Typist
     // Another tracks whether the typist is currently burnt out.
     // A third tracks HOW MANY turns of burnout remain (not just whether they are burnt out).
     // The remaining three should be fairly obvious.
-
+    String name;
+    char symbol;
+    int progress = 0;
+    boolean burnout_indicator = false;
+    int turns_remaining;
+    double accuracy;
+    private boolean justMistyped = false;
 
 
 
@@ -32,7 +38,9 @@ public class Typist
      */
     public Typist(char typistSymbol, String typistName, double typistAccuracy)
     {
-
+        this.name = typistName;
+        this.symbol = typistSymbol;
+        this.accuracy = typistAccuracy;
     }
 
 
