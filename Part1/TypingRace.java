@@ -121,7 +121,7 @@ public class TypingRace
         {
             double oldAccuracy = winner.getAccuracy();
             winner.setAccuracy(oldAccuracy + 0.02);
-            
+
             System.out.println();
             System.out.println("And the winner is... " + winner.getName() + "!");
             System.out.println("Final accuracy: " + winner.getAccuracy()); 
@@ -156,10 +156,12 @@ public class TypingRace
             theTypist.typeCharacter();
         }
 
+        theTypist.setJustMistyped(false);
         // Mistype check — the probability should reflect the typist's accuracy
-        if (Math.random() < theTypist.getAccuracy() * MISTYPE_BASE_CHANCE)
+        if (Math.random() < (1.0 - theTypist.getAccuracy()) * MISTYPE_BASE_CHANCE)
         {
             theTypist.slideBack(SLIDE_BACK_AMOUNT);
+            theTypist.setJustMistyped(true);
         }
 
         // Burnout check — pushing too hard increases burnout risk
