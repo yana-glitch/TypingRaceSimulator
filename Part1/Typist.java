@@ -200,7 +200,7 @@ public class Typist
      */
     public void setAccuracy(double newAccuracy)
     {
-        if (newAccuracy > 0.0 && newAccuracy < 1.0)
+        if (newAccuracy >= 0.0 && newAccuracy <= 1.0)
         {
             this.accuracy = newAccuracy;
         }
