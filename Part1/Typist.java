@@ -54,7 +54,8 @@ public class Typist
      */
     public void burnOut(int turns)
     {
-
+        this.burnout_indicator = true;
+        this.turns_remaining = turns;
     }
 
     /**
@@ -64,7 +65,15 @@ public class Typist
      */
     public void recoverFromBurnout()
     {
-
+        if (this.burnout_indicator)
+        {
+            this.turns_remaining--;
+            if (this.turns_remaining <= 0)
+            {
+                this.burnout_indicator = false;
+                this.turns_remaining = 0;
+            }
+        }
     }
 
     /**
@@ -133,7 +142,8 @@ public class Typist
      */
     public void resetToStart()
     {
-
+        this.progress = 0;
+        this.burnout_indicator = false;
     }
 
     /**
@@ -162,7 +172,10 @@ public class Typist
      */
     public void typeCharacter()
     {
-
+        if (this.burnout_indicator == false)
+        {
+            this.progress++;
+        }
     }
 
     /**
@@ -173,7 +186,10 @@ public class Typist
      */
     public void slideBack(int amount)
     {
-
+        if (this.progress - amount == 0)
+        {
+            this.progress = this.progress - amount;
+        }
     }
 
     /**
