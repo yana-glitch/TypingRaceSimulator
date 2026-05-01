@@ -207,4 +207,14 @@ public class Typist
     {
         this.symbol = newSymbol;
     }
+
+    /**
+     * Sets the justMistyped value to the specified boolean.
+     *
+     * @param value the new value for justMistyped
+     */
+    public void setJustMistyped(boolean value)
+    {
+        this.justMistyped = value;
+    }
 }
