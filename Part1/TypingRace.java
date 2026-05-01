@@ -246,7 +246,13 @@ public class TypingRace
             System.out.print('~');
             spacesAfter--; // symbol + ~ together take two characters
         }
+        // Append [<] when just mistyped so the state is visible without hiding identity.
+        if (theTypist.hasJustMistyped()) {
+            System.out.print("  [<]");
+            spacesAfter -= 5;
+        }
 
+        spacesAfter = Math.max(0, spacesAfter);
         multiplePrint(' ', spacesAfter);
         System.out.print('|');
         System.out.print(' ');
@@ -262,6 +268,10 @@ public class TypingRace
         {
             System.out.print(theTypist.getName()
                 + " (Accuracy: " + theTypist.getAccuracy() + ")");
+        }
+
+        if (theTypist.hasJustMistyped()) {
+            System.out.print(" \u2190 just mistyped");
         }
     }
 
