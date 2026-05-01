@@ -149,16 +149,16 @@ public class TypingRace
             theTypist.recoverFromBurnout();
             return;
         }
+        
+        theTypist.setJustMistyped(false);
 
         // Attempt to type a character
         if (Math.random() < theTypist.getAccuracy())
         {
             theTypist.typeCharacter();
         }
-
-        theTypist.setJustMistyped(false);
         // Mistype check — the probability should reflect the typist's accuracy
-        if (Math.random() < (1.0 - theTypist.getAccuracy()) * MISTYPE_BASE_CHANCE)
+        else if (Math.random() < (1.0 - theTypist.getAccuracy()) * MISTYPE_BASE_CHANCE)
         {
             theTypist.slideBack(SLIDE_BACK_AMOUNT);
             theTypist.setJustMistyped(true);
